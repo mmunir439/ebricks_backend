@@ -1,4 +1,5 @@
-//npm install nodemailer
+const dotenv = require("dotenv");
+dotenv.config();
 const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -11,7 +12,7 @@ const transporter = nodemailer.createTransport({
 // optionally export a function to send emails
 const sendEmail = async (toEmail, subject, html) => {
   await transporter.sendMail({
-    from: `"My App" <${process.env.EMAIL_USER}>`,
+    from: `"Ebricks Platform" <${process.env.EMAIL_USER}>`,
     to: toEmail,
     subject: subject,
     html: html,

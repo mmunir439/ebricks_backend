@@ -1,10 +1,16 @@
-// filepath: utils/hash.js
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
-exports.hashPassword = async (password) => {
-  return await bcrypt.hash(password, 10);
+// Function to hash a password
+const hashPassword = async (password) => {
+  const saltRounds = 10; // Number of salt rounds
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
+  return hashedPassword;
 };
 
-exports.comparePassword = async (password, hash) => {
-  return await bcrypt.compare(password, hash);
+// Function to compare a plain password with a hashed password
+const comparePassword = async (plainPassword, hashedPassword) => {
+  const isMatch = await bcrypt.compare(plainPassword, hashedPassword);
+  return isMatch;
 };
+
+module.exports = { hashPassword, comparePassword };
