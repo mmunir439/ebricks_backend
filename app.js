@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors"); // Import cors
 const userRoutes = require("./routes/user.js");
+const bricksRoutes = require("./routes/bricks.js");
 const connectDB = require("./utils/db.js");
 
 // Load environment variables from .env file
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use("/user", userRoutes);
+app.use("/bricks", bricksRoutes);
 
 // Connect DB
 connectDB();
